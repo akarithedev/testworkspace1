@@ -9,10 +9,10 @@ x-common:
   panel:
     &panel-environment
     # This URL should be the URL that your reverse proxy routes to the panel server
-    APP_URL: "https://pterodactyl.example.com"
+    APP_URL: "https://supreme-invention-5r6jq4xj597fp4j7-80.app.github.dev"
     # A list of valid timezones can be found here: http://php.net/manual/en/timezones.php
-    APP_TIMEZONE: "UTC"
-    APP_SERVICE_AUTHOR: "noreply@example.com"
+    APP_TIMEZONE: "GMT"
+    APP_SERVICE_AUTHOR: "maria7892020@gmail.com"
     TRUSTED_PROXIES: "*" # Set this to your proxy IP
     # Uncomment the line below and set to a non-empty value if you want to use Let's Encrypt
     # to generate an SSL certificate for the Panel.
@@ -46,7 +46,7 @@ services:
       MYSQL_DATABASE: "panel"
       MYSQL_USER: "pterodactyl"
   cache:
-    image: redis:alpine
+    image: mariadb:10.5
     restart: always
   panel:
     image: ghcr.io/pterodactyl/panel:latest
@@ -67,9 +67,9 @@ services:
       DB_PASSWORD: *db-password
       APP_ENV: "production"
       APP_ENVIRONMENT_ONLY: "false"
-      CACHE_DRIVER: "redis"
-      SESSION_DRIVER: "redis"
-      QUEUE_DRIVER: "redis"
+      CACHE_DRIVER: "file"
+      SESSION_DRIVER: "database"
+      QUEUE_DRIVER: "database"
       REDIS_HOST: "cache"
       DB_HOST: "database"
       DB_PORT: "3306"
